@@ -1,0 +1,25 @@
+{
+  "name": "multilang-label-manager",
+  "version": "1.0.0",
+  "description": "Simple way to manage the labels for multilang website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fab95s/multilang-label-manager.git"
+  },
+  "keywords": [
+    "multilanguage",
+    "multilang",
+    "labels",
+    "manager"
+  ],
+  "author": "Fabio Sperone <fabio.sperone@gmail.com> (https://www.fabiosperone.it)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fab95s/multilang-label-manager/issues"
+  },
+  "homepage": "https://github.com/fab95s/multilang-label-manager#readme"
+}
