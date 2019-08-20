@@ -1,18 +1,26 @@
 class Label {
-	constructor() {
+	constructor(req) {
 		this.DEFAULT_LANG = "en";
-		this.lang = null;
+		this.req = req;
+		this.actualLang = req.headers["accept-language"].slice(0, 2);
+		this.labels = null;
 	}
-	
-	getLabel(msg) {
-		if(this.lang === null) {
+
+	loadLanguage() {
+		let headerLang = this.req.headers["accept-language"].slice(0, 2);
+		if(this.labels === null || this.actualLang !== headerLang) {
+			this.actualLang = headerLang;
 			try {
-				this.lang = require(`./lang/${global.Lang}.json`);
+				this.labels = require(`./lang/${this.actualLang}.json`);
 			} catch (error) {
-				this.lang = require(`./lang/${this.DEFAULT_LANG}.json`);
+				this.labels = require(`./lang/${this.DEFAULT_LANG}.json`);
 			}
 		}
-		return this.lang[msg];
+	}
+	
+	getLabel(label) {
+		this.loadLanguage();
+		return this.labels[label];
 	}
 
 	setDefaultLang(lang) {
@@ -20,4 +28,4 @@ class Label {
 	}
 }
 
-module.exports = new Label();
+module.exports = (req) => new Label(req);
