@@ -18,7 +18,7 @@ class Label {
 		}
 	}
 	
-	getLabel(label) {
+	renderLabel(label) {
 		this.loadLanguage();
 		return this.labels[label];
 	}

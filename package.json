@@ -4,7 +4,7 @@
 	"description": "Simple way to manage the labels for multilang website",
 	"main": "index.js",
 	"scripts": {
-		"test": "nodemon --experimental-modules index.mjs"
+		"test": "nodemon --experimental-modules test.mjs"
 	},
 	"repository": {
 		"type": "git",
