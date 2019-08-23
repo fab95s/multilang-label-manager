@@ -4,6 +4,7 @@ class Label {
 		this.req = req;
 		this.actualLang = req.headers["accept-language"].slice(0, 2);
 		this.labels = null;
+		this.fs = require("fs");
 	}
 
 	loadLanguage() {
@@ -16,6 +17,22 @@ class Label {
 				this.labels = require(`./lang/${this.DEFAULT_LANG}.json`);
 			}
 		}
+	}
+
+	getAvailableLang() {
+		let langs = this.fs.readdirSync("./lang");
+		return langs.map(el => el.slice(0, 2));
+	}
+
+	addLabel(obj) {
+		this.getAvailableLang().forEach((el) => {
+			let jsonLang = require(`./lang/${el}.json`);
+			this.fs.writeFile(`./lang/${el}.json`, JSON.stringify({...jsonLang, ...obj[el]}), err => {
+				if(err) {
+					console.log("Error while writing file", err);
+				}
+			});
+		});
 	}
 	
 	renderLabel(label) {
