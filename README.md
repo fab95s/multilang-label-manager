@@ -32,5 +32,5 @@ global.LabelManager.addLabels({
 The defalt language is **en** to set new language as default use the command:
 
 ``` javascript
-global.LabelManager.setDefault("es");
+global.LabelManager.setDefaultLang("es");
 ```
